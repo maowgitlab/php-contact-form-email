@@ -36,12 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Mailtrap configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Username = 'your_mailtrap_username';
-        $mail->Password = 'your_mailtrap_password';
+        $mail->Username = 'b80bca97c07819';
+        $mail->Password = '0105ba680cc8ab';
         $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->Port = 2525;
 
         // Email settings
         $mail->setFrom($email, $name);
