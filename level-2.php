@@ -17,8 +17,8 @@
             $mail->isSMTP();
             $mail->Host = 'sandbox.smtp.mailtrap.io';
             $mail->SMTPAuth = true;
-            $mail->Username = 'b80bca97c07819';
-            $mail->Password = '0105ba680cc8ab';
+            $mail->Username = 'TODO';
+            $mail->Password = 'TODO';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 2525;
 
@@ -29,8 +29,12 @@
             $mail->Body = $message;
 
             // Attach file if provided
-            if ($file['size'] > 0) {
-                $mail->addAttachment($file['tmp_name'], $file['name']);
+            for ($i=0; $i < count($file['name']); $i++) { 
+                if ($file['error'][$i] === UPLOAD_ERR_OK) {
+                    $mail->addAttachment($file['tmp_name'][$i], $file['name'][$i]);
+                } else {
+                    echo "Error uploading file: " . $file['error'][$i] . 'Error code: ' . $file['error'][$i];
+                }
             }
 
             $mail->send();
@@ -67,7 +71,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="file" class="block text-gray-700 font-bold mb-2">Attach File:</label>
-                    <input type="file" id="file" name="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <input type="file" id="file" name="file[]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" multiple>
                 </div>
                 <div class="flex items-center justify-between">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Send</button>

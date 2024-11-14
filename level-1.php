@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Username = 'b80bca97c07819';
-        $mail->Password = '0105ba680cc8ab';
+        $mail->Username = 'TODO';
+        $mail->Password = 'TODO';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 2525;
 
